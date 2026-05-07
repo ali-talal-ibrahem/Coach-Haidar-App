@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>برنامج التدريب | كوتش حيدر</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Cairo:wght@400;700;900&display=swap');
+        
+        :root {
+            --a4-width: 210mm;
+            --main-yellow: #facc15;
+        }
+
+        body {
+            font-family: 'Cairo', sans-serif;
+            background-color: #f1f5f9;
+            margin: 0;
+            padding: 0;
+        }
+
+        /* تنسيق الصفحة الواحدة */
+        .page {
+            width: var(--a4-width);
+            height: 297mm;
+            padding: 10mm 15mm;
+            margin: 20px auto;
+            background: white;
+            box-shadow: 0 0 20px rgba(0,0,0,0.1);
+            position: relative; 
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            page-break-after: always;
+            z-index: 1;
+        }
+
+        /* تنسيق العلامة المائية */
+        .watermark {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%) rotate(-35deg);
+            z-index: -1;
+            pointer-events: none;
+            user-select: none;
+            text-align: center;
+            opacity: 0.08;
+            white-space: nowrap;
+        }
+
+        .watermark span {
+            display: block;
+            font-size: 140px;
+            font-weight: 900;
+            line-height: 0.8;
+            color: #000;
+            text-transform: uppercase;
+        }
+
+        .card-grid {
+            position: relative;
+            z-index: 1;
+            display: grid;
+            grid-template-columns: 1fr 1fr; 
+            gap: 15px;
+            flex-grow: 1;
+            align-content: start;
+        }
+
+        .final-card {
+            border-top: 8px solid var(--main-yellow);
+            border-bottom: 2px solid var(--main-yellow);
+            border-left: 1px solid #e2e8f0;
+            border-right: 1px solid #e2e8f0;
+            border-radius: 12px;
+            padding: 15px;
+            background: rgba(255, 255, 255, 0.9);
+            height: fit-content;
+        }
+
+        .section-header {
+            background-color: rgba(250, 204, 21, 0.1);
+            border: 1px solid rgba(250, 204, 21, 0.3);
+            color: #000;
+        }
+
+        footer {
+            border-top: 1px solid #e2e8f0;
+            text-align: center;
+            padding-top: 10px;
+            margin-top: auto;
+            position: relative;
+            z-index: 10;
+        }
+
+        @media print {
+            @page { size: A4; margin: 0; }
+            body { background: white; }
+            .page { 
+                margin: 0 !important; 
+                box-shadow: none !important; 
+                border-radius: 0 !important;
+                width: 210mm !important;
+                height: 297mm !important;
+                -webkit-print-color-adjust: exact;
+                print-color-adjust: exact;         
+            }
+            .watermark { 
+                display: block !important;
+                opacity: 0.08 !important; 
+                -webkit-print-color-adjust: exact; 
+                print-color-adjust: exact; 
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div id="main-wrapper"></div>
+
+    <script>
+        const data = JSON.parse(localStorage.getItem('coachHaidarProgram'));
+
+        if (!data) {
+            alert("لا توجد بيانات!");
+            window.location.href = 'index.html';
+        } else {
+            // تحديث عنوان المستند ليكون اسم الملف عند الحفظ
+            if (data.player) {
+                document.title = `برنامج تدريب - ${data.player}`;
+            }
+
+            const wrapper = document.getElementById('main-wrapper');
+            const sections = data.sections;
+            let currentSectionIndex = 0;
+
+            const cardsPerFirstPage = 4;
+            const cardsPerOtherPages = 6;
+
+            function createPage(isFirstPage = false) {
+                const pageDiv = document.createElement('div');
+                pageDiv.className = 'page';
+
+                const wm = document.createElement('div');
+                wm.className = 'watermark';
+                wm.innerHTML = `<span>COACH</span><span>HAIDAR</span>`;
+                pageDiv.appendChild(wm);
+
+                if (isFirstPage) {
+                    const header = `
+                    <header class="relative z-10 flex justify-between items-center border-b-8 border-yellow-400 pb-4 mb-6">
+                        <div>
+                            <h1 class="text-4xl font-black text-slate-900 tracking-tight">${data.player}</h1>
+                            <div class="flex items-center gap-3 text-slate-500 font-bold mt-2">
+                                <i class="fas fa-calendar-alt text-yellow-500 text-sm"></i>
+                                <span class="text-sm tracking-wide">${data.date}</span>
+                            </div>
+                        </div>
+                        <div class="text-left">
+                            <h2 class="text-3xl font-black italic tracking-tighter text-slate-900 uppercase">Coach Haidar</h2>
+                            <p class="text-[9px] font-black text-yellow-500 uppercase tracking-[0.2em]">Pain is temporary, greatness lasts forever</p>
+                        </div>
+                    </header>`;
+                    pageDiv.insertAdjacentHTML('beforeend', header);
+                } else {
+                    pageDiv.style.paddingTop = "20mm"; 
+                }
+
+                const grid = document.createElement('div');
+                grid.className = 'card-grid';
+
+                const limit = isFirstPage ? cardsPerFirstPage : cardsPerOtherPages;
+                const pageSections = sections.slice(currentSectionIndex, currentSectionIndex + limit);
+                currentSectionIndex += limit;
+
+                pageSections.forEach(section => {
+                    let exRows = section.exercises.map(ex => `
+                        <div class="flex justify-between items-center py-2 border-b border-dashed border-slate-100">
+                            <span class="font-bold text-slate-800 text-[13px]">${ex.name}</span>
+                            <div dir="ltr" class="font-black text-slate-900 text-[13px]">
+                                <span class="text-red-500">${ex.rounds}</span> 
+                                <span class="text-slate-300 mx-0.5">×</span> 
+                                <span class="text-green-600">${ex.reps}</span>
+                            </div>
+                        </div>
+                    `).join('');
+
+                    grid.innerHTML += `
+                        <div class="final-card">
+                            <div class="section-header flex items-center justify-center py-1.5 mb-3 rounded-lg">
+                                <h3 class="font-black text-slate-900 text-[12px] uppercase">${section.title}</h3>
+                            </div>
+                            <div class="space-y-0.5">${exRows}</div>
+                        </div>
+                    `;
+                });
+
+                pageDiv.appendChild(grid);
+
+                const footer = `
+                <footer>
+                    <p class="text-slate-400 font-bold text-[10px] uppercase tracking-widest">Professional Training Protocol © 2026 | COACH HAIDAR</p>
+                </footer>`;
+                pageDiv.insertAdjacentHTML('beforeend', footer);
+
+                return pageDiv;
+            }
+
+            wrapper.appendChild(createPage(true));
+
+            while (currentSectionIndex < sections.length) {
+                wrapper.appendChild(createPage(false));
+            }
+
+            // تشغيل نافذة الطباعة بعد ثانية واحدة لضمان استقرار التنسيق
+            setTimeout(() => { 
+                window.print(); 
+            }, 1000);
+        }
+    </script>
+</body>
+</html>

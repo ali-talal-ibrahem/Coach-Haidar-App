@@ -1,0 +1,71 @@
+@import url('https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;900&display=swap');
+
+body {
+    font-family: 'Cairo', sans-serif;
+    direction: rtl;
+    background-color: #0b1120;
+}
+
+/* بطاقة القسم الأساسية */
+.coach-card {
+    background: rgba(30, 41, 59, 0.4);
+    backdrop-filter: blur(12px);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    border-radius: 1.5rem;
+    position: relative;
+    transition: transform 0.3s ease;
+}
+
+/* --- نظام الألوان الموحد (Content-Matching) --- */
+
+/* 0- الأصفر */
+.border-accent-0 { border-right: 5px solid #facc15; }
+.border-accent-0 .dynamic-text { color: #facc15; }
+.border-accent-0 .dynamic-bg { background: rgba(250, 204, 21, 0.1); border: 1px solid rgba(250, 204, 21, 0.2); }
+.border-accent-0 .exercise-item { border-right: 2px solid #facc15; background: rgba(250, 204, 21, 0.03); }
+
+/* 1- الأزرق */
+.border-accent-1 { border-right: 5px solid #3b82f6; }
+.border-accent-1 .dynamic-text { color: #3b82f6; }
+.border-accent-1 .dynamic-bg { background: rgba(59, 130, 246, 0.1); border: 1px solid rgba(59, 130, 246, 0.2); }
+.border-accent-1 .exercise-item { border-right: 2px solid #3b82f6; background: rgba(59, 130, 246, 0.03); }
+
+/* 2- الأخضر */
+.border-accent-2 { border-right: 5px solid #10b981; }
+.border-accent-2 .dynamic-text { color: #10b981; }
+.border-accent-2 .dynamic-bg { background: rgba(16, 185, 129, 0.1); border: 1px solid rgba(16, 185, 129, 0.2); }
+.border-accent-2 .exercise-item { border-right: 2px solid #10b981; background: rgba(16, 185, 129, 0.03); }
+
+/* 3- البنفسجي */
+.border-accent-3 { border-right: 5px solid #a855f7; }
+.border-accent-3 .dynamic-text { color: #a855f7; }
+.border-accent-3 .dynamic-bg { background: rgba(168, 85, 247, 0.1); border: 1px solid rgba(168, 85, 247, 0.2); }
+.border-accent-3 .exercise-item { border-right: 2px solid #a855f7; background: rgba(168, 85, 247, 0.03); }
+
+/* 4- البرتقالي */
+.border-accent-4 { border-right: 5px solid #f97316; }
+.border-accent-4 .dynamic-text { color: #f97316; }
+.border-accent-4 .dynamic-bg { background: rgba(249, 115, 22, 0.1); border: 1px solid rgba(249, 115, 22, 0.2); }
+.border-accent-4 .exercise-item { border-right: 2px solid #f97316; background: rgba(249, 115, 22, 0.03); }
+
+/* تخصيص المدخلات */
+input[type="number"] {
+    background: rgba(15, 23, 42, 0.6);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    color: white;
+}
+
+@keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+.animate-card { animation: fadeIn 0.3s ease-out forwards; }
+
+body {
+    padding-bottom: 120px;
+}
+
+#downloadBtn {
+    box-shadow: 0 0 20px rgba(250, 204, 21, 0.1);
+}
+
+#downloadBtn:hover {
+    box-shadow: 0 10px 25px rgba(250, 204, 21, 0.4);
+}
