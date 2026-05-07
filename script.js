@@ -173,15 +173,27 @@ if (downloadBtn) {
 
         window.location.href = 'print.html';
     };
-
-    if ('serviceWorker' in navigator) {
-  window.addEventListener('load', () => {
-    navigator.serviceWorker.register('./sw.js').then(reg => {
-        console.log('✅ تم تسجيل المحرك بنجاح في المسار:', reg.scope);
-      })
-      .catch(err => {
-        console.error('❌ فشل التسجيل، تأكد من مسار الملف:', err);
-      });
-  });
 }
+
+// --- نظام الـ Service Worker التشخيصي ---
+if ('serviceWorker' in navigator) {
+    window.addEventListener('load', () => {
+        navigator.serviceWorker.register('./sw.js')
+        .then(reg => {
+            console.log('✅ تم تسجيل المحرك بنجاح في المسار:', reg.scope);
+            
+            // تحديث تلقائي إذا وجد نسخة جديدة
+            reg.onupdatefound = () => {
+                const installingWorker = reg.installing;
+                installingWorker.onstatechange = () => {
+                    if (installingWorker.state === 'installed' && navigator.serviceWorker.controller) {
+                        console.log('🔄 تم تحميل تحديث جديد، يرجى إعادة تحميل الصفحة.');
+                    }
+                };
+            };
+        })
+        .catch(err => {
+            console.error('❌ فشل التسجيل، تأكد من مسار ملف sw.js:', err);
+        });
+    });
 }
