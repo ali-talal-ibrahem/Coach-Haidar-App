@@ -1,19 +1,20 @@
-const cacheName = 'coach-haidar-v1';
+const cacheName = 'coach-haidar-v2'; // قمنا بتغيير الإصدار لتحديث الكاش
 const assets = [
-  '/',
-  '/index.html',
-  '/print.html',
-  '/script.js',
-  '/style.css',
+  './',
+  './index.html',
+  './print.html',
+  './script.js',
+  './style.css',
   './manifest.json',
-  '/profile.png'
+  './profile.png'
 ];
 
 // تثبيت ملفات الموقع في الكاش
 self.addEventListener('install', e => {
   e.waitUntil(
     caches.open(cacheName).then(cache => {
-      cache.addAll(assets);
+      // تم إضافة {cache: 'reload'} لضمان جلب أحدث النسخ
+      return cache.addAll(assets);
     })
   );
 });
