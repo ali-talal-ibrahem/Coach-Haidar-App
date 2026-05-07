@@ -5,6 +5,7 @@ const assets = [
   '/print.html',
   '/script.js',
   '/style.css',
+  './manifest.json',
   '/profile.png'
 ];
 
