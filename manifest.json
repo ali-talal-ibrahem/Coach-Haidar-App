@@ -1,1 +1,23 @@
-{"short_name":"HaidarApp","name":"Coach Haidar | Planned","icons":[{"src":"profile.png","sizes":"192x192","type":"image/png","purpose":"any maskable"},{"src":"profile.png","sizes":"512x512","type":"image/png","purpose":"any maskable"}],"start_url":"./index.html","display":"standalone","theme_color":"#0b1120","background_color":"#0b1120","orientation":"portrait"}
+{
+  "short_name": "Coach Haidar",
+  "name": "Coach Haidar",
+  "icons": [
+    {
+      "src": "profile.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "profile.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ],
+  "start_url": "./index.html",
+  "display": "standalone",
+  "theme_color": "#0b1120",
+  "background_color": "#0b1120",
+  "orientation": "portrait"
+}
