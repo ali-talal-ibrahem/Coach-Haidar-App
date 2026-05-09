@@ -6,7 +6,7 @@ A sophisticated web application designed to build and manage professional athlet
 
 ### 🚀 Live Demo
 You can start using the application directly via the following link:
-🔗 **[Coach Haidar | Planned](https://aliibrahem.me)** 🟡
+🔗 **[Coach Haidar | Planned](https://aliibrahem.me/Coach-Haidar-APP)** 🟡
 
 ---
 
