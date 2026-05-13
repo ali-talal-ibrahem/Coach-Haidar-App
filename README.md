@@ -10,12 +10,14 @@ You can start using the application directly via the following link:
 
 ---
 
-### ✨ Current Features (v1.0.1)
+### ✨ Current Features (v1.1.0)
 * **Solid Offline Performance:** The app works efficiently even without an internet connection thanks to advanced PWA technologies. 📴🟡
 * **App Installation (PWA):** You can install the website as a shortcut on your mobile home screen, providing a native app experience. 📱🟡
-* **Draft System:** Automatic saving of your data within the browser to ensure no workout progress is lost during entry. 💾🟡
+* **Templates Library:** A new system to save your custom workouts as reusable templates, allowing you to build a library of professional programs. 📚🟡
+* **Draft & Auto-Save:** Automatic saving of your data within the browser to ensure no workout progress is lost during entry. 💾🟡
 * **Modern UX/UI:** A clean, eye-pleasing interface with a dynamic color system that changes for each training section. 🎨🟡
-* **Professional Printing System:** Export training programs in a ready-to-print format or save them as high-quality PDFs. 🖨️🟡
+* **Performance Optimized:** Fully minified and compressed codebase (HTML/JS/CSS) for lightning-fast loading and smooth interaction. 🚀🟡
+* **Professional Printing System:** Export training programs in a ready-to-print format with a custom watermark or save them as PDFs. 🖨️🟡
 
 ---
 
@@ -32,6 +34,7 @@ We are currently working on transforming this app into a comprehensive gym manag
 
 ### 👨‍💻 Developer Information
 * **Name:** Ali Talal Ibrahem
+* **Role:** Software Engineer & Full-Stack Developer
 * **Published Date:** May 2026
 
 ---
