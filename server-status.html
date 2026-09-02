@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#facc15">
+    <title>حالة السيرفر | Coach Haidar</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- FontAwesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Custom Style -->
+    <link rel="stylesheet" href="style.css">
+</head>
+<body class="bg-[#0b1120] text-slate-200 min-h-screen flex flex-col justify-between">
+
+    <!-- Header -->
+    <header class="bg-slate-900/90 border-b border-yellow-400/20 p-4 sticky top-0 z-50 backdrop-blur-md">
+        <div class="max-w-6xl mx-auto flex items-center justify-between">
+            <div class="flex items-center gap-4">
+                <div class="profile-img-wrapper w-12 h-12 rounded-full border-2 border-yellow-400 overflow-hidden bg-slate-800">
+                    <img src="profile.png" alt="Coach Haidar" class="w-full h-full object-cover">
+                </div>
+                <div>
+                    <h1 class="text-xl md:text-2xl font-black italic text-yellow-400 uppercase tracking-tighter">COACH HAIDAR</h1>
+                    <p class="text-[10px] text-slate-400 font-bold uppercase tracking-widest">Pain is temporary, greatness lasts forever</p>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="max-w-md mx-auto px-4 my-auto w-full text-center py-12">
+        <div class="bg-slate-900/80 border border-red-500/20 rounded-3xl p-8 shadow-2xl space-y-6 backdrop-blur-sm">
+            
+            <!-- Server Icon Container -->
+            <div class="relative w-24 h-24 mx-auto flex items-center justify-center">
+                <div class="absolute inset-0 bg-red-500/10 rounded-full animate-ping opacity-75"></div>
+                <div class="relative w-20 h-20 bg-slate-800 border-2 border-red-500/30 rounded-2xl flex items-center justify-center text-red-500 text-3xl shadow-[0_0_20px_rgba(239,68,68,0.2)]">
+                    <i class="fas fa-server"></i>
+                    <!-- Offline Badge Indicator -->
+                    <span class="absolute -top-1 -right-1 flex h-4 w-4">
+                      <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-red-400 opacity-75"></span>
+                      <span class="relative inline-flex rounded-full h-4 w-4 bg-red-500"></span>
+                    </span>
+                </div>
+            </div>
+
+            <!-- Text Content -->
+            <div class="space-y-2">
+                <h2 class="text-2xl font-black text-white">السيرفر متوقف عن العمل</h2>
+                <p class="text-slate-400 text-sm leading-relaxed">
+                    يرجى التواصل مع المطور لمعرفة السبب.
+                </p>
+            </div>
+
+            <!-- WhatsApp Action Button -->
+            <div class="pt-2">
+                <a href="https://wa.me/963939294970" target="_blank" class="w-full bg-emerald-500/10 hover:bg-emerald-500 text-emerald-400 hover:text-white border border-emerald-500/20 py-3.5 px-4 rounded-xl font-black text-xs uppercase transition-all flex items-center justify-center gap-2 group shadow-lg">
+                    <i class="fab fa-whatsapp text-lg group-hover:scale-110 transition-transform"></i>
+                    <span>التواصل عبر واتساب</span>
+                </a>
+            </div>
+
+        </div>
+    </main>
+
+    <!-- Footer Space Holder -->
+    <footer class="p-4 text-center text-slate-600 text-xs font-bold">
+        COACH HAIDAR &copy; 2026
+    </footer>
+
+</body>
+</html>
